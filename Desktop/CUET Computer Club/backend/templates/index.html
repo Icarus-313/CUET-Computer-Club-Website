@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CUET Computer Club</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <h2 class="logo" id="logo">CUET Computer Club</h2>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <h1>CUET Computer Club</h1>
+        <p>Create &lt;/&gt; Contribute &lt;/&gt; Conquer</p>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+        <h2>About Us</h2>
+        <p>
+            CUET Computer Club is a student-driven organization dedicated to
+            promoting programming, problem-solving, and technological excellence.
+        </p>
+    </section>
+
+    <!-- EVENTS -->
+<!-- EVENTS -->
+<section id="events" class="section">
+    <h2>Our Events</h2>
+
+    <div class="card-container">
+        {% for event in events %}
+        <div class="card">
+            {% if event[3] %}
+            <img src="{{ url_for('static', filename='images/' + event[3]) }}" alt="{{ event[1] }}">
+            {% endif %}
+            <h3>{{ event[1] }}</h3>
+            <p>{{ event[2] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+    <!-- TEAM -->
+    <section id="team" class="section">
+        <h2>Executive Team</h2>
+    
+        <div class="card-container">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/1.png') }}">
+                <h3>President</h3>
+                <p>Adil Raihan</p>
+            </div>
+    
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/9.png') }}">
+                <h3>General Secretary</h3>
+                <p>Fahim Ferdous</p>
+            </div>
+    
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/nahin-01.jpg') }}">
+                <h3>Treasurer</h3>
+                <p>Nahin Munkar</p>
+            </div>
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/2.png') }}">
+                <h3>Deputy General Secretary</h3>
+                <p>Shadman Saleh</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>Email: computerclub@cuet.ac.bd</p>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 CUET Computer Club. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+
+</body>
+</html>

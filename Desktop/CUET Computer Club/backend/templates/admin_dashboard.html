@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Admin Dashboard</h2>
+
+        <p><a href="/admin/logout">Logout</a></p>
+
+        <h3>Add New Event</h3>
+
+        <form action="/admin/add_event" method="post" enctype="multipart/form-data">
+            <input type="text" name="title" placeholder="Event Title" required>
+            <textarea name="description" placeholder="Event Description" required></textarea>
+            <input type="file" name="image">
+            <button type="submit">Add Event</button>
+        </form>
+
+        <h3>Existing Events</h3>
+        <ul>
+            {% for event in events %}
+                <li>
+                    {{ event[1] }}
+                    |
+                    <a href="/admin/delete_event/{{ event[0] }}">Delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+</body>
+</html>
