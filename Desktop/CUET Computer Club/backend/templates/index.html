@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>CUET Computer Club</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -8,91 +9,132 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <h2 class="logo" id="logo">CUET Computer Club</h2>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#events">Events</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">CUET Computer Club</a>
 
-    <!-- HERO SECTION -->
-    <section id="home" class="hero">
-        <h1>CUET Computer Club</h1>
-        <p>Create &lt;/&gt; Contribute &lt;/&gt; Conquer</p>
-    </section>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <!-- ABOUT -->
-    <section id="about" class="section">
-        <h2>About Us</h2>
-        <p>
-            CUET Computer Club is a student-driven organization dedicated to
-            promoting programming, problem-solving, and technological excellence.
-        </p>
-    </section>
-
-    <!-- EVENTS -->
-<!-- EVENTS -->
-<section id="events" class="section">
-    <h2>Our Events</h2>
-
-    <div class="card-container">
-        {% for event in events %}
-        <div class="card">
-            {% if event[3] %}
-            <img src="{{ url_for('static', filename='images/' + event[3]) }}" alt="{{ event[1] }}">
-            {% endif %}
-            <h3>{{ event[1] }}</h3>
-            <p>{{ event[2] }}</p>
-        </div>
-        {% endfor %}
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
     </div>
+  </div>
+</nav>
+
+
+<!-- HERO SECTION -->
+<section id="home" class="bg-dark text-white text-center py-5">
+  <div class="container">
+    <h1 class="display-4 fw-bold">CUET Computer Club</h1>
+    <p class="lead">Create • Contribute • Conquer</p>
+    <a href="#events" class="btn btn-primary btn-lg mt-3">Explore Events</a>
+  </div>
 </section>
 
-    <!-- TEAM -->
-    <section id="team" class="section">
-        <h2>Executive Team</h2>
-    
-        <div class="card-container">
-            <div class="card">
-                <img src="{{ url_for('static', filename='images/1.png') }}">
-                <h3>President</h3>
-                <p>Adil Raihan</p>
-            </div>
-    
-            <div class="card">
-                <img src="{{ url_for('static', filename='images/9.png') }}">
-                <h3>General Secretary</h3>
-                <p>Fahim Ferdous</p>
-            </div>
-    
-            <div class="card">
-                <img src="{{ url_for('static', filename='images/nahin-01.jpg') }}">
-                <h3>Treasurer</h3>
-                <p>Nahin Munkar</p>
-            </div>
-            <div class="card">
-                <img src="{{ url_for('static', filename='images/2.png') }}">
-                <h3>Deputy General Secretary</h3>
-                <p>Shadman Saleh</p>
-            </div>
+
+<!-- ABOUT -->
+<section id="about" class="py-5">
+  <div class="container text-center">
+    <h2 class="mb-4">About the Club</h2>
+
+    <p class="lead">
+      CUET Computer Club is a student driven organization focused on
+      programming, problem solving, innovation, and technological excellence.
+      The club regularly organizes programming contests, workshops,
+      hackathons and collaborative learning sessions.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- EVENTS -->
+<section id="events" class="py-5 bg-light">
+  <div class="container">
+
+    <h2 class="text-center mb-5">Our Events</h2>
+
+    <div class="row">
+
+      {% for event in events %}
+      <div class="col-md-4">
+
+        <div class="card mb-4 shadow-sm">
+
+          {% if event[3] %}
+          <img src="{{ url_for('static', filename='images/' + event[3]) }}" class="card-img-top">
+          {% endif %}
+
+          <div class="card-body">
+            <h5 class="card-title">{{ event[1] }}</h5>
+            <p class="card-text">{{ event[2] }}</p>
+          </div>
+
         </div>
-    </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-        <h2>Contact Us</h2>
-        <p>Email: computerclub@cuet.ac.bd</p>
-    </section>
+      </div>
+      {% endfor %}
 
-    <footer class="footer">
-        <p>© 2026 CUET Computer Club. All rights reserved.</p>
-    </footer>
-    <script src="script.js"></script>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- TEAM -->
+<section id="team" class="py-5">
+  <div class="container">
+
+    <h2 class="text-center mb-5">Executive Team</h2>
+
+    <div class="row text-center">
+      {% for member in team_members %}
+      <div class="col-md-3">
+        <div class="card shadow">
+          {% if member[3] %}
+          <img src="{{ url_for('static', filename='images/' + member[3]) }}" class="card-img-top">
+          {% endif %}
+          <div class="card-body">
+            <h5>{{ member[2] }}</h5>
+            <p>{{ member[1] }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="py-5 bg-light">
+  <div class="container text-center">
+
+    <h2 class="mb-4">Contact Us</h2>
+
+    <p class="lead">Email: computerclub@cuet.ac.bd</p>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center py-3">
+  <p class="mb-0">© 2026 CUET Computer Club. All rights reserved.</p>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
