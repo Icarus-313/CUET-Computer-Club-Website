@@ -1,3 +1,70 @@
+:root {
+    --primary-indigo: #4c1d95;
+    --accent-purple: #7c3aed;
+    --bg-dark: #020617;
+    --text-white: #ffffff;
+    --main-gradient: linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+/* NAVBAR - Updated for transparency over Hero */
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px;
+    background: transparent;
+    z-index: 10;
+}
+
+/* HERO - Entirely new layout */
+.hero {
+    height: 100vh;
+    background: #4a4a4a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+/* Unique Addition: Pill Buttons */
+.btn-pill {
+    padding: 12px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn-pill.white { background: white; color: var(--primary-indigo); }
+.btn-pill.outline { border: 2px solid white; color: white; margin-left: 15px; }
+
+/* Unique Addition: Stats Bar */
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 60px;
+}
+
+.stat h3 { font-size: 32px; }
+
 * {
     margin: 0;
     padding: 0;
@@ -35,26 +102,6 @@ body {
     color: white;
     text-decoration: none;
     font-weight: bold;
-}
-
-/* HERO */
-.hero {
-    height: 80vh;
-    background-color: #e6f0ff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.hero h1 {
-    font-size: 48px;
-    color: #002147;
-}
-
-.hero p {
-    font-size: 20px;
-    margin-top: 10px;
 }
 
 /* SECTIONS */
@@ -133,4 +180,53 @@ html {
     .card {
         width: 90%;
     }
+}
+
+/* GLASSMORPHISM NAVBAR */
+.navbar {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+/* CARD HOVER ANIMATION */
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+/* MODERN EVENT GRID */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.mission-box {
+    background: var(--main-gradient);
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    margin-top: 50px;
+}
+
+/* FOOTER - New Styles */
+.footer {
+    background: #1e293b;
+    color: #fff;
+    padding: 40px 0 0 0;
+    text-align: center;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 32px auto;
+    padding: 0 24px;
+    align-items: start;
 }
